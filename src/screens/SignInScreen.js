@@ -19,6 +19,7 @@ const SignInScreen = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(true);
 
   const handleLogin = () => {
     if (email === "" || password === "") {
@@ -59,7 +60,7 @@ const SignInScreen = () => {
             placeholder="Enter your password"
             value={password}
             onChangeText={(text) => setPassword(text)}
-            secureTextEntry
+            secureTextEntry={showPassword}
             autoCapitalize="none"
           />
           <Feather
@@ -68,12 +69,16 @@ const SignInScreen = () => {
             size={24}
             color={"#546A7E"}
           />
-          <Feather
+          <TouchableOpacity
             style={styles.eyeIcon}
-            name="eye-off"
-            size={24}
-            color={"#546A7E"}
-          />
+            onPress={() => setShowPassword(!showPassword)}
+          >
+            <Feather
+              name={showPassword ? "eye-off" : "eye"}
+              size={24}
+              color={"#546A7E"}
+            />
+          </TouchableOpacity>
         </View>
 
         <Text style={styles.bellowLabel}>Must be at least 8 characters*</Text>
