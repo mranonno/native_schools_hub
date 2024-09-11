@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
 
@@ -31,7 +32,7 @@ const SignInScreen = () => {
   return (
     <View style={[styles.mainContainer, { paddingTop: top }]}>
       <View style={styles.titleContainer}>
-        <Image source={logo} />
+        <Image style={{ width: "70%", resizeMode: "contain" }} source={logo} />
         <Text style={styles.welcome}>Welcome Back!</Text>
       </View>
       <View style={styles.formContainer}>
@@ -39,7 +40,7 @@ const SignInScreen = () => {
         <View>
           <TextInput
             style={styles.input}
-            placeholder="Enter your email"
+            placeholder="Email"
             value={email}
             onChangeText={(text) => setEmail(text)}
             keyboardType="email-address"
@@ -48,7 +49,7 @@ const SignInScreen = () => {
           <Feather
             style={styles.leftIconInput}
             name="mail"
-            size={24}
+            size={20}
             color={"#546A7E"}
           />
         </View>
@@ -57,7 +58,7 @@ const SignInScreen = () => {
         <View>
           <TextInput
             style={styles.input}
-            placeholder="Enter your password"
+            placeholder="Password"
             value={password}
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={showPassword}
@@ -66,7 +67,7 @@ const SignInScreen = () => {
           <Feather
             style={styles.leftIconInput}
             name="lock"
-            size={24}
+            size={20}
             color={"#546A7E"}
           />
           <TouchableOpacity
@@ -75,13 +76,17 @@ const SignInScreen = () => {
           >
             <Feather
               name={showPassword ? "eye-off" : "eye"}
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
           </TouchableOpacity>
         </View>
-
-        <Text style={styles.bellowLabel}>Must be at least 8 characters*</Text>
+        <View style={styles.passwordVerifyText}>
+          <Text style={styles.bellowLabel}>Must be at least 8 characters</Text>
+          <TouchableOpacity>
+            <MaterialCommunityIcons name="target" size={16} color="#546A7E" />
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity onPress={handleLogin} style={styles.button}>
           <Text style={styles.buttonText}>Sign In</Text>
         </TouchableOpacity>
@@ -124,6 +129,9 @@ const SignInScreen = () => {
       <TouchableOpacity>
         <Text style={styles.termsText}>of Use and Privacy Policy</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("mainHomeScreen")}>
+        <Text>Go to Home Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -131,15 +139,21 @@ const SignInScreen = () => {
 export default SignInScreen;
 
 const styles = StyleSheet.create({
+  passwordVerifyText: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: -10,
+    gap: 5,
+  },
   leftIconInput: {
     position: "absolute",
-    top: 15,
+    top: 17,
     left: 14,
   },
   eyeIcon: {
     position: "absolute",
-    top: 15,
-    right: 14,
+    top: 17,
+    right: 20,
   },
   signIcon: {
     backgroundColor: "white",
@@ -203,7 +217,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   bellowLabel: {
-    marginTop: -10,
     fontSize: 12,
     lineHeight: 14,
   },
@@ -232,16 +245,16 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#EEEEEE",
     paddingVertical: 12,
     paddingLeft: 46,
     borderRadius: 10,
     marginBottom: 20,
   },
   welcome: {
-    fontSize: 16,
+    fontSize: 20,
     marginTop: 20,
-    fontWeight: "500",
+    fontWeight: "600",
     color: "#0B2A46",
   },
   subTitle: {
@@ -251,10 +264,10 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     alignItems: "center",
-    marginTop: 70,
+    marginTop: 50,
   },
   mainContainer: {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "#F5F5F5",
     flex: 1,
   },
 });

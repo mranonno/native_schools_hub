@@ -1,6 +1,7 @@
 import {
   Image,
   ScrollView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -11,6 +12,7 @@ import React, { useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
 
@@ -51,6 +53,11 @@ const SignUpScreen = () => {
   };
   return (
     <View style={{ flex: 1 }}>
+      <StatusBar
+        translucent={true}
+        backgroundColor={"white"}
+        barStyle={"dark-content"}
+      />
       <ScrollView
         contentContainerStyle={[
           styles.mainContainer,
@@ -58,8 +65,11 @@ const SignUpScreen = () => {
         ]}
       >
         <View style={styles.titleContainer}>
-          <Image source={logo} />
-          <Text style={styles.welcome}>Create an account</Text>
+          <Image
+            style={{ width: "70%", resizeMode: "contain" }}
+            source={logo}
+          />
+          <Text style={styles.createAccount}>Create an account</Text>
         </View>
         <View style={styles.formContainer}>
           <Text style={styles.label}>First Name *</Text>
@@ -74,7 +84,7 @@ const SignUpScreen = () => {
             <Feather
               style={styles.leftIconInput}
               name="user"
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
           </View>
@@ -90,7 +100,7 @@ const SignUpScreen = () => {
             <Feather
               style={styles.leftIconInput}
               name="user"
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
           </View>
@@ -107,7 +117,7 @@ const SignUpScreen = () => {
             <Feather
               style={styles.leftIconInput}
               name="mail"
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
           </View>
@@ -123,7 +133,7 @@ const SignUpScreen = () => {
             <Feather
               style={styles.leftIconInput}
               name="phone"
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
           </View>
@@ -141,7 +151,7 @@ const SignUpScreen = () => {
             <Feather
               style={styles.leftIconInput}
               name="lock"
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
             <TouchableOpacity
@@ -150,12 +160,19 @@ const SignUpScreen = () => {
             >
               <Feather
                 name={showPassword ? "eye-off" : "eye"}
-                size={24}
+                size={20}
                 color={"#546A7E"}
               />
             </TouchableOpacity>
           </View>
-          <Text style={styles.bellowLabel}>Must be at least 8 characters*</Text>
+          <View style={styles.passwordVerifyText}>
+            <Text style={styles.bellowLabel}>
+              Must be at least 8 characters
+            </Text>
+            <TouchableOpacity>
+              <MaterialCommunityIcons name="target" size={16} color="#546A7E" />
+            </TouchableOpacity>
+          </View>
           <Text style={[styles.label, { marginTop: 20 }]}>
             Confirm Password *
           </Text>
@@ -171,7 +188,7 @@ const SignUpScreen = () => {
             <Feather
               style={styles.leftIconInput}
               name="lock"
-              size={24}
+              size={20}
               color={"#546A7E"}
             />
             <TouchableOpacity
@@ -180,14 +197,19 @@ const SignUpScreen = () => {
             >
               <Feather
                 name={showConfirmPassword ? "eye-off" : "eye"}
-                size={24}
+                size={20}
                 color={"#546A7E"}
               />
             </TouchableOpacity>
           </View>
-          <Text style={styles.bellowLabel}>
-            Must be the same as above password*
-          </Text>
+          <View style={styles.passwordVerifyText}>
+            <Text style={styles.bellowLabel}>
+              Must be the same as above password
+            </Text>
+            <TouchableOpacity>
+              <MaterialCommunityIcons name="target" size={16} color="#546A7E" />
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity onPress={handleSignUp} style={styles.button}>
             <Text style={styles.buttonText}>Create an account</Text>
           </TouchableOpacity>
@@ -224,6 +246,12 @@ const SignUpScreen = () => {
 export default SignUpScreen;
 
 const styles = StyleSheet.create({
+  passwordVerifyText: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: -10,
+    gap: 5,
+  },
   leftIconInput: {
     position: "absolute",
     top: 15,
@@ -276,7 +304,6 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   bellowLabel: {
-    marginTop: -10,
     fontSize: 12,
     lineHeight: 14,
   },
@@ -305,16 +332,16 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#EEEEEE",
     paddingVertical: 12,
     paddingLeft: 46,
     borderRadius: 10,
     marginBottom: 20,
   },
-  welcome: {
-    fontSize: 16,
+  createAccount: {
+    fontSize: 20,
     marginTop: 20,
-    fontWeight: "500",
+    fontWeight: "600",
     color: "#0B2A46",
   },
   subTitle: {
@@ -324,10 +351,10 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     alignItems: "center",
-    marginTop: 70,
+    marginTop: 50,
   },
   mainContainer: {
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "#F5F5F5",
     paddingBottom: 40,
   },
 });
