@@ -24,6 +24,8 @@ const SignUpScreen = () => {
   const [number, setNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(true);
+  const [showConfirmPassword, setConfirmShowPassword] = useState(true);
 
   const handleSignUp = () => {
     if (
@@ -133,7 +135,7 @@ const SignUpScreen = () => {
               placeholder="Password"
               value={password}
               onChangeText={(text) => setPassword(text)}
-              secureTextEntry
+              secureTextEntry={showPassword}
               autoCapitalize="none"
             />
             <Feather
@@ -142,12 +144,16 @@ const SignUpScreen = () => {
               size={24}
               color={"#546A7E"}
             />
-            <Feather
+            <TouchableOpacity
               style={styles.eyeIcon}
-              name="eye-off"
-              size={24}
-              color={"#546A7E"}
-            />
+              onPress={() => setShowPassword(!showPassword)}
+            >
+              <Feather
+                name={showPassword ? "eye-off" : "eye"}
+                size={24}
+                color={"#546A7E"}
+              />
+            </TouchableOpacity>
           </View>
           <Text style={styles.bellowLabel}>Must be at least 8 characters*</Text>
           <Text style={[styles.label, { marginTop: 20 }]}>
@@ -159,7 +165,7 @@ const SignUpScreen = () => {
               placeholder="Password"
               value={confirmPassword}
               onChangeText={(text) => setConfirmPassword(text)}
-              secureTextEntry
+              secureTextEntry={showConfirmPassword}
               autoCapitalize="none"
             />
             <Feather
@@ -168,12 +174,16 @@ const SignUpScreen = () => {
               size={24}
               color={"#546A7E"}
             />
-            <Feather
+            <TouchableOpacity
               style={styles.eyeIcon}
-              name="eye-off"
-              size={24}
-              color={"#546A7E"}
-            />
+              onPress={() => setConfirmShowPassword(!showConfirmPassword)}
+            >
+              <Feather
+                name={showConfirmPassword ? "eye-off" : "eye"}
+                size={24}
+                color={"#546A7E"}
+              />
+            </TouchableOpacity>
           </View>
           <Text style={styles.bellowLabel}>
             Must be the same as above password*
