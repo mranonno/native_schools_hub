@@ -4,6 +4,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import React from "react";
@@ -40,6 +41,7 @@ const HomeScreen = () => {
           </View>
           <View style={styles.headerIcons}>
             <Image source={messageNotify} />
+            <Text style={styles.messageCountText}>10</Text>
           </View>
           <View style={styles.headerIcons}>
             <Ionicons
@@ -65,15 +67,17 @@ const HomeScreen = () => {
       <ScrollView contentContainerStyle={[styles.scrolledNavigationContainer]}>
         <Text style={styles.navigationText}>Navigations</Text>
         <View style={styles.navigationContainer}>
-          <View
+          <TouchableOpacity
             style={[styles.navigationItem, { backgroundColor: Colors.Primary }]}
           >
             <View style={styles.imageContainer}>
               <Feather name="play-circle" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Bootcamps</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#eb77e6" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#eb77e6" }]}
+          >
             <View style={styles.imageContainer}>
               <MaterialCommunityIcons
                 name="card-bulleted-outline"
@@ -82,8 +86,10 @@ const HomeScreen = () => {
               />
             </View>
             <Text style={styles.containerText}>Dashboard</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#9808F5" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#9808F5" }]}
+          >
             <View style={styles.imageContainer}>
               <Ionicons
                 name="chatbox-ellipses-outline"
@@ -92,8 +98,10 @@ const HomeScreen = () => {
               />
             </View>
             <Text style={styles.containerText}>Chats</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#EF7917" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#EF7917" }]}
+          >
             <View style={styles.imageContainer}>
               <MaterialCommunityIcons
                 name="calendar-month-outline"
@@ -102,8 +110,10 @@ const HomeScreen = () => {
               />
             </View>
             <Text style={styles.containerText}>Calender</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#097EF2" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#097EF2" }]}
+          >
             <View style={styles.imageContainer}>
               <MaterialCommunityIcons
                 name="shopping-outline"
@@ -112,14 +122,18 @@ const HomeScreen = () => {
               />
             </View>
             <Text style={styles.containerText}>Purchased</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#83B4FF" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#83B4FF" }]}
+          >
             <View style={styles.imageContainer}>
               <FontAwesome5 name="users" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Community</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#00D7C5" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#00D7C5" }]}
+          >
             <View style={styles.imageContainer}>
               <MaterialCommunityIcons
                 name="chart-line"
@@ -128,8 +142,10 @@ const HomeScreen = () => {
               />
             </View>
             <Text style={styles.containerText}>Day to day{"\n"}activities</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#F34141" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#F34141" }]}
+          >
             <View style={styles.imageContainer}>
               <MaterialCommunityIcons
                 name="text-box-check-outline"
@@ -138,37 +154,47 @@ const HomeScreen = () => {
               />
             </View>
             <Text style={styles.containerText}>Technical Tests</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#4F14EA" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#4F14EA" }]}
+          >
             <View style={styles.imageContainer}>
               <Ionicons name="barcode-sharp" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Mock Interview</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#639DCB" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#639DCB" }]}
+          >
             <View style={styles.imageContainer}>
               <Entypo name="documents" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Show N Tell</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#DA7297" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#DA7297" }]}
+          >
             <View style={styles.imageContainer}>
               <AntDesign name="appstore-o" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Audios & Videos</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#5BBCFF" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#5BBCFF" }]}
+          >
             <View style={styles.imageContainer}>
               <Ionicons name="notifications-outline" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Notifications</Text>
-          </View>
-          <View style={[styles.navigationItem, { backgroundColor: "#FDB70A" }]}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.navigationItem, { backgroundColor: "#FDB70A" }]}
+          >
             <View style={styles.imageContainer}>
               <Ionicons name="document-text-outline" size={30} color="white" />
             </View>
             <Text style={styles.containerText}>Documents</Text>
-          </View>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -178,6 +204,15 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  messageCountText: {
+    position: "absolute",
+    backgroundColor: "red",
+    color: "white",
+    padding: 1,
+    borderRadius: 4,
+    top: -2,
+    right: -2,
+  },
   iconsContainer: {
     flexDirection: "row",
     gap: 15,
