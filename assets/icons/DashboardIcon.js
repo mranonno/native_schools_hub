@@ -6,21 +6,21 @@ function DashboardIcon(props) {
     <Svg
       width={30}
       height={30}
-      viewBox="0 0 30 30"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <Path
-        d="M15 27.5c6.904 0 12.5-5.596 12.5-12.5S21.904 2.5 15 2.5 2.5 8.096 2.5 15 8.096 27.5 15 27.5z"
-        stroke="#fff"
-        strokeWidth={2}
+        d="M7.5 4h9c.62 0 1.17.02 1.66.09 2.63.29 3.34 1.53 3.34 4.91v6c0 3.38-.71 4.62-3.34 4.91-.49.07-1.04.09-1.66.09h-9c-.62 0-1.17-.02-1.66-.09C3.21 19.62 2.5 18.38 2.5 15V9c0-3.38.71-4.62 3.34-4.91C6.33 4.02 6.88 4 7.5 4zM13.5 10H17M7 15.5h10"
+        stroke="#FFFFFF"
+        strokeWidth={1.5}
         strokeLinecap="round"
         strokeLinejoin="round"
       />
       <Path
-        d="M20.3 9.7l-2.65 7.95L9.7 20.3l2.65-7.95L20.3 9.7z"
-        stroke="#fff"
+        d="M10.095 10h.009M7.095 10h.009"
+        stroke="#FFFFFF"
         strokeWidth={2}
         strokeLinecap="round"
         strokeLinejoin="round"

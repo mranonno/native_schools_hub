@@ -1,7 +1,6 @@
 import {
   Image,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -9,26 +8,32 @@ import {
 } from "react-native";
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
-import Entypo from "@expo/vector-icons/Entypo";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { Colors } from "../theme/Colors";
 import { RegularFonts } from "../theme/RegularFonts";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import messageNotify from "../../assets/icons/message-notif.png";
+import BootcampsIcon from "../../assets/icons/BootcampsIcon";
+import ChatsIcon from "../../assets/icons/ChatsIcon";
+import CalendarIcon from "../../assets/icons/CalendarIcon";
+import MenuIcon from "../../assets/icons/MenuIcon";
+import PurchasedIcon from "../../assets/icons/PurchasedIcon";
+import DashboardIcon from "../../assets/icons/DashboardIcon";
+import CommunityIcon from "../../assets/icons/CommunityIcon";
+import ActivitiesIcon from "../../assets/icons/ActivitiesIcon";
+import TechnicalIcon from "../../assets/icons/TechnicalIcon";
+import InterviewIcon from "../../assets/icons/InterviewIcon";
+import ShowIcon from "../../assets/icons/ShowIcon";
+import AudioAndVideoIcon from "../../assets/icons/AudioAndVideoIcon";
+import NotificationIcon from "../../assets/icons/NotificationIcon";
+import DocumentsIcon from "../../assets/icons/Documents";
 const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
   return (
     <View style={{ flex: 1, paddingTop: top }}>
       <View style={styles.headerContainer}>
-        <MaterialCommunityIcons
-          name="menu"
-          size={28}
-          color={Colors.GrayButtonColor}
-        />
+        <MenuIcon />
         <View style={styles.iconsContainer}>
           <View style={styles.headerIcons}>
             <Feather name="repeat" size={20} color={Colors.GrayButtonColor} />
@@ -65,7 +70,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: Colors.Primary }]}
           >
             <View style={styles.imageContainer}>
-              <Feather name="play-circle" size={30} color="white" />
+              <BootcampsIcon />
             </View>
             <Text style={styles.containerText}>Bootcamps</Text>
           </TouchableOpacity>
@@ -73,11 +78,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#eb77e6" }]}
           >
             <View style={styles.imageContainer}>
-              <MaterialCommunityIcons
-                name="card-bulleted-outline"
-                size={30}
-                color="white"
-              />
+              <DashboardIcon />
             </View>
             <Text style={styles.containerText}>Dashboard</Text>
           </TouchableOpacity>
@@ -85,11 +86,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#9808F5" }]}
           >
             <View style={styles.imageContainer}>
-              <Ionicons
-                name="chatbox-ellipses-outline"
-                size={30}
-                color="white"
-              />
+              <ChatsIcon />
             </View>
             <Text style={styles.containerText}>Chats</Text>
           </TouchableOpacity>
@@ -97,11 +94,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#EF7917" }]}
           >
             <View style={styles.imageContainer}>
-              <MaterialCommunityIcons
-                name="calendar-month-outline"
-                size={30}
-                color="white"
-              />
+              <CalendarIcon />
             </View>
             <Text style={styles.containerText}>Calender</Text>
           </TouchableOpacity>
@@ -109,11 +102,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#097EF2" }]}
           >
             <View style={styles.imageContainer}>
-              <MaterialCommunityIcons
-                name="shopping-outline"
-                size={30}
-                color="white"
-              />
+              <PurchasedIcon />
             </View>
             <Text style={styles.containerText}>Purchased</Text>
           </TouchableOpacity>
@@ -121,7 +110,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#83B4FF" }]}
           >
             <View style={styles.imageContainer}>
-              <FontAwesome5 name="users" size={30} color="white" />
+              <CommunityIcon />
             </View>
             <Text style={styles.containerText}>Community</Text>
           </TouchableOpacity>
@@ -129,11 +118,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#00D7C5" }]}
           >
             <View style={styles.imageContainer}>
-              <MaterialCommunityIcons
-                name="chart-line"
-                size={30}
-                color="white"
-              />
+              <ActivitiesIcon />
             </View>
             <Text style={styles.containerText}>Day to day{"\n"}activities</Text>
           </TouchableOpacity>
@@ -141,11 +126,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#F34141" }]}
           >
             <View style={styles.imageContainer}>
-              <MaterialCommunityIcons
-                name="text-box-check-outline"
-                size={30}
-                color="white"
-              />
+              <TechnicalIcon />
             </View>
             <Text style={styles.containerText}>Technical Tests</Text>
           </TouchableOpacity>
@@ -153,7 +134,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#4F14EA" }]}
           >
             <View style={styles.imageContainer}>
-              <Ionicons name="barcode-sharp" size={30} color="white" />
+              <InterviewIcon />
             </View>
             <Text style={styles.containerText}>Mock Interview</Text>
           </TouchableOpacity>
@@ -161,7 +142,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#639DCB" }]}
           >
             <View style={styles.imageContainer}>
-              <Entypo name="documents" size={30} color="white" />
+              <ShowIcon />
             </View>
             <Text style={styles.containerText}>Show N Tell</Text>
           </TouchableOpacity>
@@ -169,7 +150,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#DA7297" }]}
           >
             <View style={styles.imageContainer}>
-              <AntDesign name="appstore-o" size={30} color="white" />
+              <AudioAndVideoIcon />
             </View>
             <Text style={styles.containerText}>Audios & Videos</Text>
           </TouchableOpacity>
@@ -177,7 +158,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#5BBCFF" }]}
           >
             <View style={styles.imageContainer}>
-              <Ionicons name="notifications-outline" size={30} color="white" />
+              <NotificationIcon />
             </View>
             <Text style={styles.containerText}>Notifications</Text>
           </TouchableOpacity>
@@ -185,7 +166,7 @@ const HomeScreen = () => {
             style={[styles.navigationItem, { backgroundColor: "#FDB70A" }]}
           >
             <View style={styles.imageContainer}>
-              <Ionicons name="document-text-outline" size={30} color="white" />
+              <DocumentsIcon />
             </View>
             <Text style={styles.containerText}>Documents</Text>
           </TouchableOpacity>
@@ -226,7 +207,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingRight: 5,
+    marginTop: 5,
     marginHorizontal: 15,
     marginBottom: 15,
   },

@@ -3,12 +3,11 @@ import SignInScreen from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/HomeScreen";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { View } from "react-native";
 import { Colors } from "../theme/Colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
+import HomeIcon from "../../assets/icons/HomeIcon";
 
 const Tab = createBottomTabNavigator();
 const TabHomeScreen = () => {
@@ -29,7 +28,7 @@ const TabHomeScreen = () => {
                 borderRadius: 12,
               }}
             >
-              <AntDesign name={iconName} size={24} color="white" />
+              <HomeIcon />
             </View>
           );
         },
