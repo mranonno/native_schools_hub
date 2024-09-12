@@ -13,6 +13,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
+import axiosInstance from "../utils/axiosInstance";
 
 const SignInScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -27,6 +28,18 @@ const SignInScreen = () => {
       alert("Error", "Please fill in both fields");
       return;
     }
+    axiosInstance
+      .post("/user/login", { email, password })
+      .then((res) => {
+        if (res.data.success) {
+          AsyncStorage.setItem("user_token", `Bearer ${res.data.token}`);
+          navigation.navigate("homeScreen");
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data.error);
+      });
+
     console.log("Logging in with", email, password);
   };
   return (

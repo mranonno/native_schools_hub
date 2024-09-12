@@ -29,27 +29,17 @@ const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPassword, setConfirmShowPassword] = useState(true);
 
+  let data = {
+    firstName,
+    lastName,
+    phone: number,
+    email,
+    password,
+    confirm: confirmPassword,
+    referredBy: null,
+  };
   const handleSignUp = () => {
-    if (
-      email === "" ||
-      password === "" ||
-      firstName === "" ||
-      lastName === "" ||
-      confirmPassword === "" ||
-      number === ""
-    ) {
-      alert("Error", "Please fill in both fields");
-      return;
-    }
-    console.log(
-      "Logging in with",
-      email,
-      password,
-      firstName,
-      lastName,
-      confirmPassword,
-      number
-    );
+    console.log("Logging in with", data);
   };
   return (
     <View style={{ flex: 1 }}>

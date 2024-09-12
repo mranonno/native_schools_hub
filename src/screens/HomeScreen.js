@@ -23,12 +23,6 @@ const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
   return (
     <View style={{ flex: 1, paddingTop: top }}>
-      <StatusBar
-        translucent={true}
-        backgroundColor="transparent"
-        barStyle="dark-content"
-      />
-
       <View style={styles.headerContainer}>
         <MaterialCommunityIcons
           name="menu"
@@ -241,6 +235,7 @@ const styles = StyleSheet.create({
   profileName: {
     fontSize: RegularFonts.HR,
     fontWeight: "600",
+    color: Colors.Heading,
   },
   profileContainer: {
     flexDirection: "row",

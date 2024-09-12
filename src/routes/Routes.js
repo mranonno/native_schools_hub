@@ -6,6 +6,9 @@ import HomeScreen from "../screens/HomeScreen";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { View } from "react-native";
 import { Colors } from "../theme/Colors";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
 
 const Tab = createBottomTabNavigator();
 const TabHomeScreen = () => {
@@ -56,6 +59,21 @@ const TabHomeScreen = () => {
 
 const Stack = createStackNavigator();
 const Routes = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
+
+  useEffect(() => {
+    const checkUserToken = async () => {
+      const value = await AsyncStorage.getItem("user_token");
+      setIsLoggedIn(!!value);
+    };
+
+    checkUserToken();
+  }, []);
+
+  if (isLoggedIn === null) {
+    // Show a loading screen or spinner while checking the token
+    return null;
+  }
   return (
     <Stack.Navigator initialRouteName="signIn">
       <Stack.Screen

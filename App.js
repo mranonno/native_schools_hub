@@ -5,12 +5,12 @@ import { NavigationContainer } from "@react-navigation/native";
 export default function App() {
   return (
     <NavigationContainer>
-      <Routes />
       <StatusBar
         translucent={true}
-        backgroundColor={"white"}
-        barStyle={"dark-content"}
+        backgroundColor="transparent"
+        barStyle="dark-content"
       />
+      <Routes />
     </NavigationContainer>
   );
 }
