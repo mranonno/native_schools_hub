@@ -29,8 +29,12 @@ const HomeScreen = () => {
       />
 
       <View style={styles.headerContainer}>
-        <MaterialCommunityIcons name="menu" size={28} color="black" />
-        <View style={{ flexDirection: "row", gap: 15 }}>
+        <MaterialCommunityIcons
+          name="menu"
+          size={28}
+          color={Colors.GrayButtonColor}
+        />
+        <View style={styles.iconsContainer}>
           <View style={styles.headerIcons}>
             <Feather name="repeat" size={20} color={Colors.GrayButtonColor} />
           </View>
@@ -47,7 +51,11 @@ const HomeScreen = () => {
         </View>
       </View>
       <View style={styles.profileContainer}>
-        <FontAwesome name="user-circle-o" size={44} color="black" />
+        <FontAwesome
+          name="user-circle-o"
+          size={44}
+          color={Colors.GrayButtonColor}
+        />
         <View>
           <Text style={styles.profileName}>Anonno Das</Text>
           <Text style={styles.profileMail}>anonnodas97@gmail.com</Text>
@@ -170,6 +178,10 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  iconsContainer: {
+    flexDirection: "row",
+    gap: 15,
+  },
   headerIcons: {
     backgroundColor: "white",
     width: 50,
