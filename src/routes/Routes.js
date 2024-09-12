@@ -11,7 +11,7 @@ const TabHomeScreen = () => {
       <Tab.Screen
         name="homeScreen"
         options={{
-          headerShown: true,
+          headerShown: false,
           headerTitle: "Home Screen",
           tabBarLabel: "Home",
         }}

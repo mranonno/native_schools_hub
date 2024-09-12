@@ -21,7 +21,7 @@ export const Colors = {
   LightRed: "#FFE5E5",
   BackDropColor: "rgba(0, 0, 0, 0.7)",
   PrimaryOpacityColor: "rgba(39, 172, 31, 0.1)",
-  WhiteOpacityColor: "rgba(255,255,255, 0.1)",
+  WhiteOpacityColor: "rgba(255,255,255, 0.17)",
   datePickerDisableTextColor: "rgba(0, 0, 0, 0.2)",
   PureYellow: "#EF7817",
   PurePurple: "#4F14EA",
