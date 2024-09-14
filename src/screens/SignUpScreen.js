@@ -22,7 +22,8 @@ import VerificationModal from "../components/VerificationModal";
 const SignUpScreen = () => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { setModalVisible, setVerifyingEmail } = useContext(MainContext);
+  const { setModalVisible, setVerifyingEmail, setOtpData } =
+    useContext(MainContext);
   const [registerError, setRegisterError] = useState(null);
 
   const [firstName, setFirstName] = useState("");
@@ -36,7 +37,6 @@ const SignUpScreen = () => {
 
   const handleSignUp = async () => {
     setVerifyingEmail(email);
-    setModalVisible(true);
     let data = {
       firstName: firstName,
       lastName: lastName,
@@ -48,17 +48,21 @@ const SignUpScreen = () => {
       referredBy: null,
     };
     console.log("data", JSON.stringify(data, null, 2));
-    // try {
-    //   const response = await axiosInstance.post("/user/register", data);
-    //   console.log("User created:", response.data);
-    //   // Store user data, token, etc.
-    // } catch (error) {
-    //   console.error(
-    //     "Registration failed:",
-    //     error.response?.data || error.message
-    //   );
-    //   setRegisterError("Registration failed. Please try again.");
-    // }
+    try {
+      const response = await axiosInstance.post("/user/register", data);
+      console.log("User created:", response.data);
+      if (response.data) {
+        setOtpData(response.data);
+        setModalVisible(true);
+      }
+      // Store user data, token, etc.
+    } catch (error) {
+      console.error(
+        "Registration failed:",
+        error.response?.data || error.message
+      );
+      setRegisterError("Registration failed. Please try again.");
+    }
   };
   return (
     <View style={{ flex: 1, paddingTop: top }}>

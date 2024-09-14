@@ -11,10 +11,12 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import logo from "../../assets/logo 1.png";
 import { Colors } from "../theme/Colors";
+import axiosInstance from "../utils/axiosInstance";
 
-const OtpScreen = () => {
+const OtpScreen = ({ route }) => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
+  const { otpData, checkedChanel } = route.params;
 
   const [otp, setOtp] = useState(Array(6).fill(""));
   const inputs = useRef([]);
@@ -36,24 +38,27 @@ const OtpScreen = () => {
   };
 
   const handleLogin = () => {
-    const otpString = parseInt(otp.join(""));
-    console.log(typeof otpString);
-    console.log("otp", JSON.stringify(otpString, null, 1));
+    console.log("otpData", JSON.stringify(otpData._id, null, 1));
+    console.log("checked", checkedChanel);
+    const otpString = otp.join("");
+    console.log("otpCode", typeof otpString);
+    console.log("otpCode", otpString);
 
-    // axiosInstance
-    //   .post("/user/login", { email, password })
-    //   .then((res) => {
-    //     if (res.data.success) {
-    //       AsyncStorage.setItem("user_token", `Bearer ${res.data.token}`);
-    //       navigation.navigate("homeScreen");
-    //       console.log("token", JSON.stringify(token, null, 1));
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log("fff", JSON.stringify(error.response.data.error, null, 1));
-    //   });
-
-    // console.log("Logging in with", email, password);
+    axiosInstance
+      .post("/user/verifyotp", {
+        userId: otpData._id,
+        otp: otpString,
+        channel: checkedChanel,
+      })
+      .then((response) => {
+        console.log("response", JSON.stringify(response, null, 1));
+        navigation.navigate("signIn");
+      })
+      .catch((err) => {
+        console.log(err);
+        // err && err.response && setRegisterErrors(err.response.data?.error);
+        // setIsLoading(false);
+      });
   };
   return (
     <View style={[styles.mainContainer, { paddingTop: top }]}>
@@ -82,48 +87,6 @@ const OtpScreen = () => {
             ref={(input) => (inputs.current[index] = input)} // Set ref for each input
           />
         ))}
-        {/* <TextInput
-          style={styles.input}
-          //   value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          //   value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          //   value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          //   value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          //   value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          //   value={email}
-          onChangeText={(text) => setEmail(text)}
-          keyboardType="number-pad"
-          autoCapitalize="none"
-        /> */}
       </View>
       <TouchableOpacity onPress={handleLogin} style={styles.button}>
         <Text style={styles.buttonText}>Submit</Text>

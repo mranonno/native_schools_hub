@@ -12,14 +12,28 @@ import EmailIcon from "../../assets/icons/EmailIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { MainContext } from "../context/MainContext";
 import { useNavigation } from "@react-navigation/native";
+import axiosInstance from "../utils/axiosInstance";
 
 const VerificationModal = () => {
-  const { modalVisible, setModalVisible, verifyingEmail } =
+  const { modalVisible, setModalVisible, verifyingEmail, otpData } =
     useContext(MainContext);
   const navigation = useNavigation();
   const handleGetCodeButton = () => {
-    setModalVisible(false);
-    navigation.navigate("otpScreen");
+    let checkedChanel = "email";
+    console.log("ID", JSON.stringify(otpData._id, null, 1));
+    console.log("email", JSON.stringify(verifyingEmail, null, 1));
+    axiosInstance
+      .post("/user/sendotp", {
+        userId: otpData._id,
+        channel: checkedChanel,
+        captchaToken: "",
+      })
+      .then((response) => {
+        console.log("response", JSON.stringify(response.data, null, 1));
+        setModalVisible(false);
+        // setLoading(false);
+        navigation.navigate("otpScreen", { otpData, checkedChanel });
+      });
   };
   return (
     <View style={styles.centeredView}>
