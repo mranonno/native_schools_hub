@@ -3,7 +3,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React from "react";
 import { Colors } from "../theme/Colors";
 import { RegularFonts } from "../theme/RegularFonts";
-import { useNavigation } from "@react-navigation/native";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DrawerContent = () => {
@@ -11,6 +11,7 @@ const DrawerContent = () => {
   const handleSignOut = async () => {
     try {
       await AsyncStorage.removeItem("user_token");
+      navigation.dispatch(DrawerActions.closeDrawer());
       navigation.navigate("signIn");
     } catch (error) {
       console.log("Error removing token", error);

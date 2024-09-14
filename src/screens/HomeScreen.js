@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: 5,
+    marginTop: 10,
     marginHorizontal: 15,
     marginBottom: 15,
   },
@@ -263,7 +263,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "space-between",
-    gap: 20,
+    rowGap: 20,
   },
   navigationItem: {
     width: "47%",
