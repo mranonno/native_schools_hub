@@ -6,20 +6,30 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import logo from "../../assets/logo 1.png";
 import { Colors } from "../theme/Colors";
 import axiosInstance from "../utils/axiosInstance";
+import { MainContext } from "../context/MainContext";
 
 const OtpScreen = ({ route }) => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
+  const { verifyingEmail } = useContext(MainContext);
   const { otpData, checkedChannel } = route.params;
 
   const [otp, setOtp] = useState(Array(6).fill(""));
   const inputs = useRef([]);
+  const maskEmail = (verifyingEmail) => {
+    const [localPart, domain] = verifyingEmail.split("@");
+    const maskedLocalPart = `${localPart.slice(0, 2)}${"*".repeat(8)}`;
+
+    return `${maskedLocalPart}@${domain}`;
+  };
+
+  const maskedEmail = maskEmail(verifyingEmail);
 
   const handleChangeText = (text, index) => {
     let newOtp = [...otp];
@@ -46,7 +56,7 @@ const OtpScreen = ({ route }) => {
         channel: checkedChannel,
       })
       .then((response) => {
-        alert("Success", "User successfully created!");
+        alert("User successfully created!");
         navigation.navigate("signIn");
       })
       .catch((err) => {
@@ -65,7 +75,7 @@ const OtpScreen = ({ route }) => {
         Enter the 6-digit code that we sent to{"\n"}the email address
       </Text>
       <Text style={{ textAlign: "center", color: Colors.BodyText }}>
-        p********0@gmail.com
+        {maskedEmail}
       </Text>
       <View style={styles.formContainer}>
         {otp.map((value, index) => (

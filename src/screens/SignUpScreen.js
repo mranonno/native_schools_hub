@@ -43,7 +43,7 @@ const SignUpScreen = () => {
       number === "" ||
       confirmPassword === ""
     ) {
-      alert("Error", "Please fill in all the fields");
+      alert("Please fill in all the fields");
       return;
     }
     setVerifyingEmail(email);

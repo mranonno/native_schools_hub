@@ -89,7 +89,7 @@ const Routes = () => {
     return null;
   }
   return (
-    <Stack.Navigator initialRouteName={!isLoggedIn ? "homeDrawer" : "signUp"}>
+    <Stack.Navigator initialRouteName={isLoggedIn ? "homeDrawer" : "signIn"}>
       <Stack.Screen
         name="signIn"
         options={{ headerShown: false }}

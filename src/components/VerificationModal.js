@@ -18,14 +18,6 @@ const VerificationModal = () => {
   const { modalVisible, setModalVisible, verifyingEmail, otpData } =
     useContext(MainContext);
   const navigation = useNavigation();
-  const maskEmail = (verifyingEmail) => {
-    const [localPart, domain] = verifyingEmail.split("@");
-    const maskedLocalPart = `${localPart.slice(0, 2)}${"*".repeat(8)}`;
-
-    return `${maskedLocalPart}@${domain}`;
-  };
-
-  const maskedEmail = maskEmail(verifyingEmail);
   const handleGetCodeButton = () => {
     let checkedChannel = "email";
     axiosInstance
@@ -89,7 +81,7 @@ const VerificationModal = () => {
               <View style={{ position: "absolute", top: 13, left: 15 }}>
                 <EmailIcon />
               </View>
-              <Text style={styles.mailText}>{maskedEmail}</Text>
+              <Text style={styles.mailText}>{verifyingEmail}</Text>
             </View>
             <TouchableOpacity
               onPress={() => handleGetCodeButton()}

@@ -34,7 +34,7 @@ const SignInScreen = () => {
       .then((res) => {
         if (res.data.token) {
           AsyncStorage.setItem("user_token", `Bearer ${res.data.token}`);
-          navigation.navigate("homeScreen");
+          navigation.navigate("homeDrawer");
           console.log("token", JSON.stringify(res.data.token, null, 1));
         }
       })
