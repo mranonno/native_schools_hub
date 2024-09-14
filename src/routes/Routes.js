@@ -83,7 +83,7 @@ const Routes = () => {
     };
 
     checkUserToken();
-  }, []);
+  }, [isLoggedIn]);
 
   if (isLoggedIn === null) {
     return null;

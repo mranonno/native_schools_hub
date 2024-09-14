@@ -3,7 +3,11 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React from "react";
 import { Colors } from "../theme/Colors";
 import { Fonts } from "../theme/Fonts";
-import { DrawerActions, useNavigation } from "@react-navigation/native";
+import {
+  CommonActions,
+  DrawerActions,
+  useNavigation,
+} from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import HomeDrawerIcon from "../../assets/icons/HomeDrawerIcon";
 import ProfileDrawerIcon from "../../assets/icons/ProfileDrawerIcon";
@@ -14,6 +18,7 @@ import PassDrawerIcon from "../../assets/icons/PassDrawerIcon";
 import UpdateDrawerIcon from "../../assets/icons/UpdateDrawerIcon";
 import SignOutDrawerIcon from "../../assets/icons/SignOutDrawerIcon";
 import SettingDrawerIcon from "../../assets/icons/SettingDrawerIcon";
+import Toast from "react-native-root-toast";
 
 const DrawerContent = () => {
   const navigation = useNavigation();
@@ -21,7 +26,13 @@ const DrawerContent = () => {
     try {
       await AsyncStorage.removeItem("user_token");
       navigation.dispatch(DrawerActions.closeDrawer());
-      navigation.navigate("signIn");
+      Toast.show("Logged out!");
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 0,
+          routes: [{ name: "signIn" }],
+        })
+      );
     } catch (error) {
       console.log("Error removing token", error);
     }

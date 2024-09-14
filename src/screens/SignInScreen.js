@@ -26,7 +26,7 @@ const SignInScreen = () => {
 
   const handleLogin = () => {
     if (email === "" || password === "") {
-      alert("Error", "Please fill in both fields");
+      Toast.show("Please fill in both fields!");
       return;
     }
     axiosInstance
@@ -34,12 +34,15 @@ const SignInScreen = () => {
       .then((res) => {
         if (res.data.token) {
           AsyncStorage.setItem("user_token", `Bearer ${res.data.token}`);
+          Toast.show("Logged in!");
           navigation.navigate("homeDrawer");
-          console.log("token", JSON.stringify(res.data.token, null, 1));
         }
       })
       .catch((error) => {
-        console.log("fff", JSON.stringify(error, null, 1));
+        console.log(
+          "fff",
+          JSON.stringify(error.response?.data?.message, null, 1)
+        );
       });
   };
   return (

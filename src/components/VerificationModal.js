@@ -27,6 +27,7 @@ const VerificationModal = () => {
         captchaToken: "",
       })
       .then((response) => {
+        Toast.show("OTP has been sent!");
         console.log("response", JSON.stringify(response.data, null, 1));
         setModalVisible(false);
         navigation.navigate("otpScreen", { otpData, checkedChannel });

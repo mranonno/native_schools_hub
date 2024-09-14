@@ -56,7 +56,7 @@ const OtpScreen = ({ route }) => {
         channel: checkedChannel,
       })
       .then((response) => {
-        alert("User successfully created!");
+        Toast.show("User successfully created!");
         navigation.navigate("signIn");
       })
       .catch((err) => {
