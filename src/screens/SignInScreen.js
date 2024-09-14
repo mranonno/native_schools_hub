@@ -142,12 +142,6 @@ const SignInScreen = () => {
       <TouchableOpacity>
         <Text style={styles.termsText}>of Use and Privacy Policy</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("homeDrawer")}>
-        <Text>Go to Home Screen</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("otpScreen")}>
-        <Text>Go to Otp Screen</Text>
-      </TouchableOpacity>
     </View>
   );
 };
