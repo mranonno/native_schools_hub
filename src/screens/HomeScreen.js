@@ -28,12 +28,18 @@ import ShowIcon from "../../assets/icons/ShowIcon";
 import AudioAndVideoIcon from "../../assets/icons/AudioAndVideoIcon";
 import NotificationIcon from "../../assets/icons/NotificationIcon";
 import DocumentsIcon from "../../assets/icons/Documents";
+import { DrawerActions, useNavigation } from "@react-navigation/native";
 const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
+  const navigation = useNavigation();
   return (
     <View style={{ flex: 1, paddingTop: top }}>
       <View style={styles.headerContainer}>
-        <MenuIcon />
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        >
+          <MenuIcon />
+        </TouchableOpacity>
         <View style={styles.iconsContainer}>
           <View style={styles.headerIcons}>
             <Feather name="repeat" size={20} color={Colors.GrayButtonColor} />

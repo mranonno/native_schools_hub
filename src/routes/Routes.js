@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import HomeIcon from "../../assets/icons/HomeIcon";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import OtpScreen from "../screens/OtpScreen";
+
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const TabHomeScreen = () => {
@@ -55,14 +56,18 @@ const TabHomeScreen = () => {
 
 const Drawer = createDrawerNavigator();
 
-function DrawerNavigation() {
+const HomeDrawerNavigator = () => {
   return (
-    <Drawer.Navigator initialRouteName="Main">
-      <Drawer.Screen name="Main" component={SignInScreen} />
-      <Drawer.Screen name="Settings" component={SettingsScreen} />
+    <Drawer.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Drawer.Screen name="Home" component={HomeScreen} />
     </Drawer.Navigator>
   );
-}
+};
 
 const Routes = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -81,7 +86,7 @@ const Routes = () => {
     return null;
   }
   return (
-    <Stack.Navigator initialRouteName={isLoggedIn ? "signIn" : "signUp"}>
+    <Stack.Navigator initialRouteName={isLoggedIn ? "homeDrawer" : "signUp"}>
       <Stack.Screen
         name="signIn"
         options={{ headerShown: false }}
@@ -98,9 +103,9 @@ const Routes = () => {
         component={OtpScreen}
       />
       <Stack.Screen
-        name="mainHomeScreen"
+        name="homeDrawer"
         options={{ headerShown: false }}
-        component={TabHomeScreen}
+        component={HomeDrawerNavigator}
       />
     </Stack.Navigator>
   );
