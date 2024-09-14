@@ -3,8 +3,16 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React from "react";
 import { Colors } from "../theme/Colors";
 import { RegularFonts } from "../theme/RegularFonts";
+import { useNavigation } from "@react-navigation/native";
 
 const DrawerContent = () => {
+  const navigation = useNavigation();
+  const handleSignOut = async () => {
+    navigation.navigate("signIn");
+    // const value = await AsyncStorage.removeItem("user_token");
+    // if (!!value) {
+    // }
+  };
   return (
     <View style={styles.container}>
       <View style={styles.profileContainer}>
@@ -19,7 +27,7 @@ const DrawerContent = () => {
         </View>
       </View>
       <View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleSignOut()}>
           <Text style={styles.signOutText}>Sign Out</Text>
         </TouchableOpacity>
       </View>
