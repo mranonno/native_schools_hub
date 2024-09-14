@@ -10,6 +10,8 @@ import { useEffect, useState } from "react";
 import HomeIcon from "../../assets/icons/HomeIcon";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import OtpScreen from "../screens/OtpScreen";
+import DrawerContent from "../components/DrawerContent";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -36,10 +38,6 @@ const TabHomeScreen = () => {
           backgroundColor: "white",
         },
       })}
-      // tabBarOptions={{
-      //   activeTintColor: "tomato",
-      //   inactiveTintColor: "gray",
-      // }}
     >
       <Tab.Screen
         name="homeScreen"
@@ -57,14 +55,19 @@ const TabHomeScreen = () => {
 const Drawer = createDrawerNavigator();
 
 const HomeDrawerNavigator = () => {
+  const { top } = useSafeAreaInsets();
   return (
     <Drawer.Navigator
       initialRouteName="Home"
+      drawerContent={(props) => <DrawerContent {...props} />}
       screenOptions={{
         headerShown: false,
+        drawerStyle: {
+          marginTop: top,
+        },
       }}
     >
-      <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen name="Home" component={TabHomeScreen} />
     </Drawer.Navigator>
   );
 };
@@ -86,7 +89,7 @@ const Routes = () => {
     return null;
   }
   return (
-    <Stack.Navigator initialRouteName={isLoggedIn ? "homeDrawer" : "signUp"}>
+    <Stack.Navigator initialRouteName={!isLoggedIn ? "homeDrawer" : "signUp"}>
       <Stack.Screen
         name="signIn"
         options={{ headerShown: false }}
