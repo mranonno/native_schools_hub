@@ -11,9 +11,16 @@ import { Colors } from "../theme/Colors";
 import EmailIcon from "../../assets/icons/EmailIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { MainContext } from "../context/MainContext";
+import { useNavigation } from "@react-navigation/native";
 
 const VerificationModal = () => {
-  const { modalVisible, setModalVisible } = useContext(MainContext);
+  const { modalVisible, setModalVisible, verifyingEmail } =
+    useContext(MainContext);
+  const navigation = useNavigation();
+  const handleGetCodeButton = () => {
+    setModalVisible(false);
+    navigation.navigate("otpScreen");
+  };
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -63,9 +70,12 @@ const VerificationModal = () => {
               <View style={{ position: "absolute", top: 13, left: 15 }}>
                 <EmailIcon />
               </View>
-              <Text style={styles.mailText}>anonnodas@gmail.com</Text>
+              <Text style={styles.mailText}>{verifyingEmail}</Text>
             </View>
-            <TouchableOpacity style={styles.getCodeButton}>
+            <TouchableOpacity
+              onPress={() => handleGetCodeButton()}
+              style={styles.getCodeButton}
+            >
               <Text style={styles.getCodeButtonText}>Get Code</Text>
             </TouchableOpacity>
           </View>

@@ -22,19 +22,21 @@ import VerificationModal from "../components/VerificationModal";
 const SignUpScreen = () => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { modalVisible, setModalVisible } = useContext(MainContext);
+  const { setModalVisible, setVerifyingEmail } = useContext(MainContext);
   const [registerError, setRegisterError] = useState(null);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState("+880 ");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPassword, setConfirmShowPassword] = useState(true);
 
   const handleSignUp = async () => {
+    setVerifyingEmail(email);
+    setModalVisible(true);
     let data = {
       firstName: firstName,
       lastName: lastName,
@@ -46,17 +48,17 @@ const SignUpScreen = () => {
       referredBy: null,
     };
     console.log("data", JSON.stringify(data, null, 2));
-    try {
-      const response = await axiosInstance.post("/user/register", data);
-      console.log("User created:", response.data);
-      // Store user data, token, etc.
-    } catch (error) {
-      console.error(
-        "Registration failed:",
-        error.response?.data || error.message
-      );
-      setRegisterError("Registration failed. Please try again.");
-    }
+    // try {
+    //   const response = await axiosInstance.post("/user/register", data);
+    //   console.log("User created:", response.data);
+    //   // Store user data, token, etc.
+    // } catch (error) {
+    //   console.error(
+    //     "Registration failed:",
+    //     error.response?.data || error.message
+    //   );
+    //   setRegisterError("Registration failed. Please try again.");
+    // }
   };
   return (
     <View style={{ flex: 1, paddingTop: top }}>
@@ -79,6 +81,7 @@ const SignUpScreen = () => {
               value={firstName}
               onChangeText={(text) => setFirstName(text)}
               autoCapitalize="none"
+              autoCorrect={false}
             />
             <Feather
               style={styles.leftIconInput}
@@ -95,6 +98,7 @@ const SignUpScreen = () => {
               value={lastName}
               onChangeText={(text) => setLastName(text)}
               autoCapitalize="none"
+              autoCorrect={false}
             />
             <Feather
               style={styles.leftIconInput}
@@ -112,6 +116,7 @@ const SignUpScreen = () => {
               onChangeText={(text) => setEmail(text)}
               keyboardType="email-address"
               autoCapitalize="none"
+              autoCorrect={false}
             />
             <Feather
               style={styles.leftIconInput}
@@ -124,10 +129,12 @@ const SignUpScreen = () => {
           <View>
             <TextInput
               style={styles.input}
-              placeholder="+880"
               value={number}
               onChangeText={(text) => setNumber(text)}
+              keyboardType="number-pad"
               autoCapitalize="none"
+              autoCorrect={false}
+              maxLength={15}
             />
             <Feather
               style={styles.leftIconInput}
