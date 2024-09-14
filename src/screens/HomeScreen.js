@@ -9,7 +9,7 @@ import {
 import React from "react";
 import Feather from "@expo/vector-icons/Feather";
 import { Colors } from "../theme/Colors";
-import { RegularFonts } from "../theme/RegularFonts";
+import { Fonts } from "../theme/Fonts";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -29,6 +29,7 @@ import AudioAndVideoIcon from "../../assets/icons/AudioAndVideoIcon";
 import NotificationIcon from "../../assets/icons/NotificationIcon";
 import DocumentsIcon from "../../assets/icons/Documents";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
+import ActiveNotifyIcon from "../../assets/icons/ActiveNotifyIcon";
 const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -45,7 +46,7 @@ const HomeScreen = () => {
             <Feather name="repeat" size={20} color={Colors.GrayButtonColor} />
           </View>
           <View style={styles.headerIcons}>
-            <Image source={messageNotify} />
+            <ActiveNotifyIcon />
             <Text style={styles.messageCountText}>10</Text>
           </View>
           <View style={styles.headerIcons}>
@@ -73,6 +74,7 @@ const HomeScreen = () => {
         <Text style={styles.navigationText}>Navigations</Text>
         <View style={styles.navigationContainer}>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: Colors.Primary }]}
           >
             <View style={styles.imageContainer}>
@@ -81,6 +83,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Bootcamps</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#eb77e6" }]}
           >
             <View style={styles.imageContainer}>
@@ -89,6 +92,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Dashboard</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#9808F5" }]}
           >
             <View style={styles.imageContainer}>
@@ -97,6 +101,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Chats</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#EF7917" }]}
           >
             <View style={styles.imageContainer}>
@@ -105,6 +110,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Calender</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#097EF2" }]}
           >
             <View style={styles.imageContainer}>
@@ -113,6 +119,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Purchased</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#83B4FF" }]}
           >
             <View style={styles.imageContainer}>
@@ -121,6 +128,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Community</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#00D7C5" }]}
           >
             <View style={styles.imageContainer}>
@@ -129,6 +137,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Day to day{"\n"}activities</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#F34141" }]}
           >
             <View style={styles.imageContainer}>
@@ -137,6 +146,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Technical Tests</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#4F14EA" }]}
           >
             <View style={styles.imageContainer}>
@@ -145,6 +155,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Mock Interview</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#639DCB" }]}
           >
             <View style={styles.imageContainer}>
@@ -153,6 +164,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Show N Tell</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#DA7297" }]}
           >
             <View style={styles.imageContainer}>
@@ -161,6 +173,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Audios & Videos</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#5BBCFF" }]}
           >
             <View style={styles.imageContainer}>
@@ -169,6 +182,7 @@ const HomeScreen = () => {
             <Text style={styles.containerText}>Notifications</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
             style={[styles.navigationItem, { backgroundColor: "#FDB70A" }]}
           >
             <View style={styles.imageContainer}>
@@ -220,7 +234,7 @@ const styles = StyleSheet.create({
   profileId: { color: Colors.BodyText },
   profileMail: { color: Colors.BodyText },
   profileName: {
-    fontSize: RegularFonts.HR,
+    fontSize: Fonts.HR,
     fontWeight: "600",
     color: Colors.Heading,
   },
@@ -234,7 +248,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   navigationText: {
-    fontSize: RegularFonts.HR,
+    fontSize: Fonts.HR,
     fontWeight: "600",
     marginVertical: 18,
   },
@@ -245,7 +259,7 @@ const styles = StyleSheet.create({
   },
   containerText: {
     color: "white",
-    fontSize: RegularFonts.HR,
+    fontSize: Fonts.HR,
     fontWeight: "800",
     marginTop: 10,
     textAlign: "center",

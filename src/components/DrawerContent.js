@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import React from "react";
 import { Colors } from "../theme/Colors";
-import { RegularFonts } from "../theme/RegularFonts";
+import { Fonts } from "../theme/Fonts";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   profileMail: { color: Colors.BodyText, fontWeight: "500" },
   profileName: {
-    fontSize: RegularFonts.HR,
+    fontSize: Fonts.HR,
     fontWeight: "600",
     color: Colors.Heading,
   },

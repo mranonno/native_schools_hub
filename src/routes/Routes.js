@@ -12,6 +12,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import OtpScreen from "../screens/OtpScreen";
 import DrawerContent from "../components/DrawerContent";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import ComingSoonScreen from "../components/ComingSoonScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -85,7 +86,6 @@ const Routes = () => {
   }, []);
 
   if (isLoggedIn === null) {
-    // Show a loading screen or spinner while checking the token
     return null;
   }
   return (
@@ -109,6 +109,11 @@ const Routes = () => {
         name="homeDrawer"
         options={{ headerShown: false }}
         component={HomeDrawerNavigator}
+      />
+      <Stack.Screen
+        name="comingSoon"
+        options={{ headerShown: true, headerTitle: "Back" }}
+        component={ComingSoonScreen}
       />
     </Stack.Navigator>
   );

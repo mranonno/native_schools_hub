@@ -16,7 +16,7 @@ import axiosInstance from "../utils/axiosInstance";
 const OtpScreen = ({ route }) => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { otpData, checkedChanel } = route.params;
+  const { otpData, checkedChannel } = route.params;
 
   const [otp, setOtp] = useState(Array(6).fill(""));
   const inputs = useRef([]);
@@ -39,7 +39,7 @@ const OtpScreen = ({ route }) => {
 
   const handleLogin = () => {
     console.log("otpData", JSON.stringify(otpData._id, null, 1));
-    console.log("checked", checkedChanel);
+    console.log("checked", checkedChannel);
     const otpString = otp.join("");
     console.log("otpCode", typeof otpString);
     console.log("otpCode", otpString);
@@ -48,7 +48,7 @@ const OtpScreen = ({ route }) => {
       .post("/user/verifyotp", {
         userId: otpData._id,
         otp: otpString,
-        channel: checkedChanel,
+        channel: checkedChannel,
       })
       .then((response) => {
         console.log("response", JSON.stringify(response, null, 1));
@@ -56,8 +56,6 @@ const OtpScreen = ({ route }) => {
       })
       .catch((err) => {
         console.log(err);
-        // err && err.response && setRegisterErrors(err.response.data?.error);
-        // setIsLoading(false);
       });
   };
   return (
@@ -82,9 +80,9 @@ const OtpScreen = ({ route }) => {
             onChangeText={(text) => handleChangeText(text, index)}
             value={value}
             keyboardType="number-pad"
-            maxLength={1} // Limit input to one character
+            maxLength={1}
             autoCapitalize="none"
-            ref={(input) => (inputs.current[index] = input)} // Set ref for each input
+            ref={(input) => (inputs.current[index] = input)}
           />
         ))}
       </View>

@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Colors } from "../theme/Colors";
 import EmailIcon from "../../assets/icons/EmailIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -19,20 +19,17 @@ const VerificationModal = () => {
     useContext(MainContext);
   const navigation = useNavigation();
   const handleGetCodeButton = () => {
-    let checkedChanel = "email";
-    console.log("ID", JSON.stringify(otpData._id, null, 1));
-    console.log("email", JSON.stringify(verifyingEmail, null, 1));
+    let checkedChannel = "email";
     axiosInstance
       .post("/user/sendotp", {
         userId: otpData._id,
-        channel: checkedChanel,
+        channel: checkedChannel,
         captchaToken: "",
       })
       .then((response) => {
         console.log("response", JSON.stringify(response.data, null, 1));
         setModalVisible(false);
-        // setLoading(false);
-        navigation.navigate("otpScreen", { otpData, checkedChanel });
+        navigation.navigate("otpScreen", { otpData, checkedChannel });
       });
   };
   return (
