@@ -52,54 +52,75 @@ const DrawerContent = () => {
           </View>
         </View>
         <View style={{ marginTop: 35, flexDirection: "column", gap: 35 }}>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <HomeDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Home
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <ProfileDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Profile
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <BootCampsDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Bootcamps
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <TechnicalDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Technical Tests
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <DocumentsDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               My Documents
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <PassDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Change Password
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("comingSoon")}
+            style={{ flexDirection: "row", gap: 30 }}
+          >
             <SettingDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Display Setting
             </Text>
-          </View>
-          <View style={{ flexDirection: "row", gap: 30 }}>
+          </TouchableOpacity>
+          <TouchableOpacity style={{ flexDirection: "row", gap: 30 }}>
             <UpdateDrawerIcon height={20} weight={20} />
             <Text style={{ color: Colors.Heading, fontWeight: "500" }}>
               Check for Update
             </Text>
-          </View>
+          </TouchableOpacity>
           <View style={[styles.horizontalLine, { borderBottomWidth: 2 }]} />
         </View>
       </View>
