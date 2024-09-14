@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -16,11 +16,13 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
 import axiosInstance from "../utils/axiosInstance";
-// import VerificationModal from "../components/VerificationModal";
+import { MainContext } from "../context/MainContext";
+import VerificationModal from "../components/VerificationModal";
 
 const SignUpScreen = () => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
+  const { modalVisible, setModalVisible } = useContext(MainContext);
   const [registerError, setRegisterError] = useState(null);
 
   const [firstName, setFirstName] = useState("");
@@ -57,12 +59,9 @@ const SignUpScreen = () => {
     }
   };
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingTop: top }}>
       <ScrollView
-        contentContainerStyle={[
-          styles.mainContainer,
-          { paddingTop: top, flexGrow: 1 },
-        ]}
+        contentContainerStyle={[styles.mainContainer, { flexGrow: 1 }]}
       >
         <View style={styles.titleContainer}>
           <Image
@@ -216,7 +215,10 @@ const SignUpScreen = () => {
         </View>
         <Text style={styles.registerWithText}>Or Register With</Text>
         <View style={styles.signIconContainer}>
-          <TouchableOpacity style={styles.signIcon}>
+          <TouchableOpacity
+            onPress={() => setModalVisible(true)}
+            style={styles.signIcon}
+          >
             <FontAwesome name="facebook" size={24} color={"#27AC1F"} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.signIcon}>
@@ -237,9 +239,9 @@ const SignUpScreen = () => {
           <TouchableOpacity onPress={() => navigation.navigate("signIn")}>
             <Text style={styles.signInText}>Sign In</Text>
           </TouchableOpacity>
-          {/* <VerificationModal /> */}
         </View>
       </ScrollView>
+      <VerificationModal />
     </View>
   );
 };

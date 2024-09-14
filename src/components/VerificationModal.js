@@ -6,13 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Colors } from "../theme/Colors";
 import EmailIcon from "../../assets/icons/EmailIcon";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { MainContext } from "../context/MainContext";
 
 const VerificationModal = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+  const { modalVisible, setModalVisible } = useContext(MainContext);
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -70,9 +71,6 @@ const VerificationModal = () => {
           </View>
         </View>
       </Modal>
-      <Pressable onPress={() => setModalVisible(true)}>
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
     </View>
   );
 };

@@ -146,6 +146,9 @@ const SignInScreen = () => {
       <TouchableOpacity onPress={() => navigation.navigate("mainHomeScreen")}>
         <Text>Go to Home Screen</Text>
       </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("otpScreen")}>
+        <Text>Go to Otp Screen</Text>
+      </TouchableOpacity>
     </View>
   );
 };

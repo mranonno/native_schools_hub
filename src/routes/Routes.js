@@ -9,6 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import HomeIcon from "../../assets/icons/HomeIcon";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import OtpScreen from "../screens/OtpScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 const TabHomeScreen = () => {
@@ -90,6 +91,11 @@ const Routes = () => {
         name="signUp"
         options={{ headerShown: false }}
         component={SignUpScreen}
+      />
+      <Stack.Screen
+        name="otpScreen"
+        options={{ headerShown: false }}
+        component={OtpScreen}
       />
       <Stack.Screen
         name="mainHomeScreen"
