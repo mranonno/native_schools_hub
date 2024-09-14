@@ -1,7 +1,6 @@
 import {
   Image,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
@@ -24,7 +23,7 @@ const SignUpScreen = () => {
   const navigation = useNavigation();
   const { setModalVisible, setVerifyingEmail, setOtpData } =
     useContext(MainContext);
-  const [registerError, setRegisterError] = useState(null);
+  // const [registerError, setRegisterError] = useState(null);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -61,7 +60,6 @@ const SignUpScreen = () => {
         "Registration failed:",
         error.response?.data || error.message
       );
-      setRegisterError("Registration failed. Please try again.");
     }
   };
   return (

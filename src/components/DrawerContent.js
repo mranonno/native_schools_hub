@@ -4,14 +4,17 @@ import React from "react";
 import { Colors } from "../theme/Colors";
 import { RegularFonts } from "../theme/RegularFonts";
 import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const DrawerContent = () => {
   const navigation = useNavigation();
   const handleSignOut = async () => {
-    navigation.navigate("signIn");
-    // const value = await AsyncStorage.removeItem("user_token");
-    // if (!!value) {
-    // }
+    try {
+      await AsyncStorage.removeItem("user_token");
+      navigation.navigate("signIn");
+    } catch (error) {
+      console.log("Error removing token", error);
+    }
   };
   return (
     <View style={styles.container}>

@@ -14,6 +14,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
 import axiosInstance from "../utils/axiosInstance";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SignInScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -31,17 +32,15 @@ const SignInScreen = () => {
     axiosInstance
       .post("/user/login", { email, password })
       .then((res) => {
-        if (res.data.success) {
+        if (res.data.token) {
           AsyncStorage.setItem("user_token", `Bearer ${res.data.token}`);
           navigation.navigate("homeScreen");
-          console.log("token", JSON.stringify(token, null, 1));
+          console.log("token", JSON.stringify(res.data.token, null, 1));
         }
       })
       .catch((error) => {
-        console.log("fff", JSON.stringify(error.response.data.error, null, 1));
+        console.log("fff", JSON.stringify(error, null, 1));
       });
-
-    console.log("Logging in with", email, password);
   };
   return (
     <View style={[styles.mainContainer, { paddingTop: top }]}>
