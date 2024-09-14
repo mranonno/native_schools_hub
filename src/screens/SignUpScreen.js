@@ -17,6 +17,7 @@ import Feather from "react-native-vector-icons/Feather";
 import axiosInstance from "../utils/axiosInstance";
 import { MainContext } from "../context/MainContext";
 import VerificationModal from "../components/VerificationModal";
+import Toast from "react-native-root-toast";
 
 const SignUpScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -43,7 +44,7 @@ const SignUpScreen = () => {
       number === "" ||
       confirmPassword === ""
     ) {
-      alert("Please fill in all the fields");
+      Toast.show("Please fill in all the fields!");
       return;
     }
     setVerifyingEmail(email);

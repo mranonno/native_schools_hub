@@ -13,6 +13,7 @@ import logo from "../../assets/logo 1.png";
 import { Colors } from "../theme/Colors";
 import axiosInstance from "../utils/axiosInstance";
 import { MainContext } from "../context/MainContext";
+import Toast from "react-native-root-toast";
 
 const OtpScreen = ({ route }) => {
   const { top } = useSafeAreaInsets();

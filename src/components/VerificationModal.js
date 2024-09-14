@@ -13,6 +13,7 @@ import AntDesign from "@expo/vector-icons/AntDesign";
 import { MainContext } from "../context/MainContext";
 import { useNavigation } from "@react-navigation/native";
 import axiosInstance from "../utils/axiosInstance";
+import Toast from "react-native-root-toast";
 
 const VerificationModal = () => {
   const { modalVisible, setModalVisible, verifyingEmail, otpData } =

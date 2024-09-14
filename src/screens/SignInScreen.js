@@ -15,6 +15,7 @@ import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
 import axiosInstance from "../utils/axiosInstance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Toast from "react-native-root-toast";
 
 const SignInScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -40,7 +41,7 @@ const SignInScreen = () => {
       })
       .catch((error) => {
         console.log(
-          "fff",
+          "Error",
           JSON.stringify(error.response?.data?.message, null, 1)
         );
       });
