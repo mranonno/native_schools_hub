@@ -1,7 +1,7 @@
 import axios from "axios";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
 
-let apiUrl = false
+let apiUrl = true
   ? "https://api.bootcampshub.ai/api"
   : "https://staging-api.bootcampshub.ai/api";
 // let apiUrl =  'http://192.168.242.219:5000/api'

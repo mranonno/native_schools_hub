@@ -34,10 +34,11 @@ const SignInScreen = () => {
         if (res.data.success) {
           AsyncStorage.setItem("user_token", `Bearer ${res.data.token}`);
           navigation.navigate("homeScreen");
+          console.log("token", JSON.stringify(token, null, 1));
         }
       })
       .catch((error) => {
-        console.log(error.response.data.error);
+        console.log("fff", JSON.stringify(error.response.data.error, null, 1));
       });
 
     console.log("Logging in with", email, password);

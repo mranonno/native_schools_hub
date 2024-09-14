@@ -15,10 +15,13 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import logo from "../../assets/logo 1.png";
 import Feather from "react-native-vector-icons/Feather";
+import axiosInstance from "../utils/axiosInstance";
+// import VerificationModal from "../components/VerificationModal";
 
 const SignUpScreen = () => {
   const { top } = useSafeAreaInsets();
   const navigation = useNavigation();
+  const [registerError, setRegisterError] = useState(null);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -29,25 +32,32 @@ const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPassword, setConfirmShowPassword] = useState(true);
 
-  let data = {
-    firstName,
-    lastName,
-    phone: number,
-    email,
-    password,
-    confirm: confirmPassword,
-    referredBy: null,
-  };
-  const handleSignUp = () => {
-    console.log("Logging in with", data);
+  const handleSignUp = async () => {
+    let data = {
+      firstName: firstName,
+      lastName: lastName,
+      phone: number.replace(/\D/g, ""),
+      password: password,
+      confirm: confirmPassword,
+      email: email,
+      "": number,
+      referredBy: null,
+    };
+    console.log("data", JSON.stringify(data, null, 2));
+    try {
+      const response = await axiosInstance.post("/user/register", data);
+      console.log("User created:", response.data);
+      // Store user data, token, etc.
+    } catch (error) {
+      console.error(
+        "Registration failed:",
+        error.response?.data || error.message
+      );
+      setRegisterError("Registration failed. Please try again.");
+    }
   };
   return (
     <View style={{ flex: 1 }}>
-      <StatusBar
-        translucent={true}
-        backgroundColor={"white"}
-        barStyle={"dark-content"}
-      />
       <ScrollView
         contentContainerStyle={[
           styles.mainContainer,
@@ -227,6 +237,7 @@ const SignUpScreen = () => {
           <TouchableOpacity onPress={() => navigation.navigate("signIn")}>
             <Text style={styles.signInText}>Sign In</Text>
           </TouchableOpacity>
+          {/* <VerificationModal /> */}
         </View>
       </ScrollView>
     </View>

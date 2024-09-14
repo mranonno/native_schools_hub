@@ -8,18 +8,14 @@ import { Colors } from "../theme/Colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import HomeIcon from "../../assets/icons/HomeIcon";
-
+import { createDrawerNavigator } from "@react-navigation/drawer";
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 const TabHomeScreen = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
-          let iconName;
-
-          if (route.name === "homeScreen") {
-            iconName = focused ? "home" : "home";
-          }
           return (
             <View
               style={{
@@ -56,7 +52,17 @@ const TabHomeScreen = () => {
   );
 };
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function DrawerNavigation() {
+  return (
+    <Drawer.Navigator initialRouteName="Main">
+      <Drawer.Screen name="Main" component={SignInScreen} />
+      <Drawer.Screen name="Settings" component={SettingsScreen} />
+    </Drawer.Navigator>
+  );
+}
+
 const Routes = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
@@ -74,7 +80,7 @@ const Routes = () => {
     return null;
   }
   return (
-    <Stack.Navigator initialRouteName="signIn">
+    <Stack.Navigator initialRouteName={isLoggedIn ? "signIn" : "signUp"}>
       <Stack.Screen
         name="signIn"
         options={{ headerShown: false }}
