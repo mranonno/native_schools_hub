@@ -38,12 +38,7 @@ const OtpScreen = ({ route }) => {
   };
 
   const handleLogin = () => {
-    console.log("otpData", JSON.stringify(otpData._id, null, 1));
-    console.log("checked", checkedChannel);
     const otpString = otp.join("");
-    console.log("otpCode", typeof otpString);
-    console.log("otpCode", otpString);
-
     axiosInstance
       .post("/user/verifyotp", {
         userId: otpData._id,
@@ -51,7 +46,7 @@ const OtpScreen = ({ route }) => {
         channel: checkedChannel,
       })
       .then((response) => {
-        console.log("response", JSON.stringify(response, null, 1));
+        alert("Success", "User successfully created!");
         navigation.navigate("signIn");
       })
       .catch((err) => {

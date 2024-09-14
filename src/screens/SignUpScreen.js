@@ -35,6 +35,17 @@ const SignUpScreen = () => {
   const [showConfirmPassword, setConfirmShowPassword] = useState(true);
 
   const handleSignUp = async () => {
+    if (
+      email === "" ||
+      password === "" ||
+      firstName === "" ||
+      lastName === "" ||
+      number === "" ||
+      confirmPassword === ""
+    ) {
+      alert("Error", "Please fill in all the fields");
+      return;
+    }
     setVerifyingEmail(email);
     let data = {
       firstName: firstName,
